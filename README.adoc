@@ -1,0 +1,55 @@
+# Microsoft Server
+
+OpenNMS configuration for Microsoft Server operating systems
+
+Support
+
+- SNMP Traps from LAN Manager Alerts II MIB
+- Rudimentary CPU and Memory
+
+## Installation
+
+.Download and install from GitHub
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/modules-available
+git clone https://github.com/opennms-config-modules/microsoft-server.git
+----
+
+### Events
+.Install 'netsnmp.events.xml'
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/events
+ln -s ../modules-available/microsoft-server/events/*.xml .
+----
+
+.Include in eventconf.xml
+[source, xml]
+----
+<event-file>events/microsoft.server.events.xml</event-file>
+----
+
+### Datacollection
+
+.Install datacollection configuration
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/datacollection
+ln -s ../modules-available/microsoft-server/datacollection/*.xml .
+----
+
+.Include in datacollection-config.xml
+[source, xml]
+----
+<include-collection dataCollectionGroup="Microsoft-Server"/>
+----
+
+### Graph report definitions
+
+.Install graph report definitions
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/snmp-graph.properties.d
+ln -s ../modules-available/microsoft-server/graphs/*.properties .
+----
