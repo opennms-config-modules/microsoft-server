@@ -43,6 +43,7 @@ ln -s ../modules-available/microsoft-server/datacollection/*.xml .
 [source, xml]
 ----
 <include-collection dataCollectionGroup="Microsoft-Server"/>
+<include-collection dataCollectionGroup="Microsoft-Server-HTTP"/>
 ----
 
 ### Graph report definitions
